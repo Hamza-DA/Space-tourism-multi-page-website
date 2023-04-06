@@ -55,7 +55,7 @@ const Destination = ({ destination }) => {
             </div>
             <div className='flex flex-col gap-6 md:gap-10 items-center lg:items-start md:flex-col'>
               <span className='flex'>
-                {destination.map((e, i) => (
+                {destination?.map((e, i) => (
                   <button
                     key={i}
                     className={`py-2 mx-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:transition ${
@@ -135,7 +135,7 @@ export const getStaticProps = async () => {
   );
   return {
     props: {
-      destination: res.data,
+      destination: res.data || null,
     },
   };
 };

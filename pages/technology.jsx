@@ -39,7 +39,7 @@ const Technology = ({ technology }) => {
 
           <article className=' flex flex-col items-center mx-0 md:mx-0 lg:mx-0 gap-6 md:gap-10 md:flex-col md:justify-between lg:flex-row-reverse'>
             <div className='relative w-full h-52 md:h-96 lg:h-auto lg:w-1/2 lg:aspect-square border-b-[1px] border-neutral-600 md:border-none'>
-              {technology.map((e, i) => (
+              {technology?.map((e, i) => (
                 <Image
                   key={i}
                   className={`object-cover transition ${
@@ -47,9 +47,9 @@ const Technology = ({ technology }) => {
                       ? 'opacity-100'
                       : 'opacity-0 select-none pointer-events-none'
                   }`}
-                  src={e.images.portrait}
+                  src={e?.images.portrait}
                   fill='cover'
-                  alt={e.name}
+                  alt={e?.name}
                 />
               ))}
             </div>
@@ -72,7 +72,7 @@ const Technology = ({ technology }) => {
                 ))}
               </span>
               <div className='relative w-full'>
-                {technology.map((e, i) => (
+                {technology?.map((e, i) => (
                   <div
                     key={i}
                     className={`flex flex-col items-center text-center lg:items-start lg:text-left transition ${
@@ -83,10 +83,10 @@ const Technology = ({ technology }) => {
                       The terminology...
                     </span>
                     <h1 className='text-[24px] font-display-1 uppercase mb-4 lg:mb-7 md:text-[40px] lg:text-5xl'>
-                      {e.name}
+                      {e?.name}
                     </h1>
                     <p className='body-text  text-light-blue text-sm md:text-base max-w-[80%] md:max-w-[70ch] lg:max-w-[44ch] '>
-                      {e.description}
+                      {e?.description}
                     </p>
                   </div>
                 ))}
@@ -106,7 +106,7 @@ export const getStaticProps = async () => {
   );
   return {
     props: {
-      technology: res.data,
+      technology: res.data || null,
     },
   };
 };

@@ -40,7 +40,7 @@ const Role = ({ crew }) => {
 
           <article className=' flex flex-col items-center mx-4 md:mx-28 lg:mx-0 gap-6 md:gap-10 md:flex-col-reverse md:justify-between lg:flex-row-reverse'>
             <div className='relative w-full lg:w-1/2 h-auto aspect-square border-b-[1px] border-neutral-600 md:border-none'>
-              {crew.map((e, i) => (
+              {crew?.map((e, i) => (
                 <Image
                   key={i}
                   className={` object-contain transition ${
@@ -56,7 +56,7 @@ const Role = ({ crew }) => {
             </div>
             <div className='flex flex-col gap-6 md:gap-10 lg:w-1/2 items-center lg:items-start lg:gap-28 md:flex-col-reverse'>
               <span className='flex'>
-                {crew.map((e, i) => (
+                {crew?.map((e, i) => (
                   <button
                     key={i}
                     className='p-2'
@@ -75,7 +75,7 @@ const Role = ({ crew }) => {
                 ))}
               </span>
               <div className='relative w-full'>
-                {crew.map((e, i) => (
+                {crew?.map((e, i) => (
                   <div
                     key={i}
                     className={`flex flex-col items-center text-center lg:items-start lg:text-left transition ${
@@ -83,13 +83,13 @@ const Role = ({ crew }) => {
                     }`}
                   >
                     <span className='font-display-1 uppercase opacity-50 md:text-2xl lg:text-3xl lg:mb-4'>
-                      {e.role}
+                      {e?.role}
                     </span>
                     <h1 className='text-[24px] font-display-1 uppercase mb-4 lg:mb-7 md:text-[40px] lg:text-5xl'>
-                      {e.name}
+                      {e?.name}
                     </h1>
                     <p className=' text-light-blue text-sm md:text-base lg:max-w-[44ch] '>
-                      {e.bio}
+                      {e?.bio}
                     </p>
                   </div>
                 ))}
@@ -120,6 +120,6 @@ export const getStaticProps = async () => {
     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/crew`
   );
   return {
-    props: { crew: results.data },
+    props: { crew: results.data || null },
   };
 };
