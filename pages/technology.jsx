@@ -96,7 +96,7 @@ const Technology = ({ technology }) => {
 
 export default Technology;
 export const getStaticProps = async () => {
-  const res = await axios('http://localhost:3000/api/technology');
+  const res = await axios(`${process.env.BASE_URL}api/technology`);
   return {
     props: {
       technology: res.data,

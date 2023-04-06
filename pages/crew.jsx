@@ -111,7 +111,7 @@ export default Role;
 // };
 
 export const getStaticProps = async () => {
-  const results = await axios(`http://localhost:3000/api/crew`);
+  const results = await axios(`${process.env.BASE_URL}api/crew`);
   return {
     props: { crew: results.data },
   };

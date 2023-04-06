@@ -124,7 +124,7 @@ const Destination = ({ destination }) => {
 export default Destination;
 
 export const getStaticProps = async () => {
-  const res = await axios('http://localhost:3000/api/destination');
+  const res = await axios(`${process.env.BASE_URL}api/destination`);
   return {
     props: {
       destination: res.data,
