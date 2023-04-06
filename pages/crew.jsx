@@ -116,7 +116,9 @@ export default Role;
 // };
 
 export const getStaticProps = async () => {
-  const results = await axios(`${process.env.BASE_URL}api/crew`);
+  const results = await axios(
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/crew`
+  );
   return {
     props: { crew: results.data },
   };

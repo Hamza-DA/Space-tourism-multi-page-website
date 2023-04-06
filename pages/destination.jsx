@@ -130,7 +130,9 @@ const Destination = ({ destination }) => {
 export default Destination;
 
 export const getStaticProps = async () => {
-  const res = await axios(`${process.env.BASE_URL}api/destination`);
+  const res = await axios(
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/destination`
+  );
   return {
     props: {
       destination: res.data,
