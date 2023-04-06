@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import Head from 'next/head';
-
+import { useRouter } from 'next/router';
+import Loader from '../components/Loader';
 const Role = ({ crew }) => {
   const [current, setCurrent] = useState(0);
+  const router = useRouter();
+  if (router?.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <>

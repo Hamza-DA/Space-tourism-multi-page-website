@@ -2,9 +2,15 @@ import Image from 'next/image';
 import axios from 'axios';
 import Head from 'next/head';
 import { useState } from 'react';
+import Loader from '../components/Loader';
+import { useRouter } from 'next/router';
 
 const Destination = ({ destination }) => {
   const [current, setCurrent] = useState(0);
+  const router = useRouter();
+  if (router?.isFallback) {
+    return <Loader />;
+  }
   return (
     <>
       <Head>

@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import Head from 'next/head';
+import Loader from '../components/Loader';
+import { useRouter } from 'next/router';
 const Technology = ({ technology }) => {
   const [current, setCurrent] = useState(0);
-
+  const router = useRouter();
+  if (router?.isFallback) {
+    return <Loader />;
+  }
   return (
     <>
       <Head>
