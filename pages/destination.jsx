@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import Head from 'next/head';
+import { useState } from 'react';
 
-const destination = ({ destination }) => {
+const Destination = ({ destination }) => {
   const [current, setCurrent] = useState(0);
   return (
     <>
@@ -121,7 +121,7 @@ const destination = ({ destination }) => {
   );
 };
 
-export default destination;
+export default Destination;
 
 export const getStaticProps = async () => {
   const res = await axios('http://localhost:3000/api/destination');

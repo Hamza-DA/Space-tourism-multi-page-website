@@ -3,7 +3,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import Head from 'next/head';
 
-const role = ({ crew }) => {
+const Role = ({ crew }) => {
   const [current, setCurrent] = useState(0);
 
   return (
@@ -97,7 +97,7 @@ const role = ({ crew }) => {
   );
 };
 
-export default role;
+export default Role;
 // export const getStaticPaths = async () => {
 //   const results = await axios.get('http://localhost:3000/api/crew');
 //   const paths = results.data.map((result) => ({

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import Head from 'next/head';
-const technology = ({ technology }) => {
+const Technology = ({ technology }) => {
   const [current, setCurrent] = useState(0);
 
   return (
@@ -94,7 +94,7 @@ const technology = ({ technology }) => {
   );
 };
 
-export default technology;
+export default Technology;
 export const getStaticProps = async () => {
   const res = await axios('http://localhost:3000/api/technology');
   return {
