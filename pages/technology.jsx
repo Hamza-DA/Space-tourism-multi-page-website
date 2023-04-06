@@ -100,13 +100,13 @@ const Technology = ({ technology }) => {
 };
 
 export default Technology;
+import fsPromises from 'fs/promises';
+import path from 'path';
 export const getStaticProps = async () => {
-  const res = await axios(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/technology`
-  );
+  const filePath = path.join(process.cwd(), 'data.json');
+  const jsonData = await fsPromises.readFile(filePath);
+  const objectData = JSON.parse(jsonData);
   return {
-    props: {
-      technology: res.data || null,
-    },
+    props: { technology: objectData.technology },
   };
 };

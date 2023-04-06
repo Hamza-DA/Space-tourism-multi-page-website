@@ -103,23 +103,14 @@ const Role = ({ crew }) => {
 };
 
 export default Role;
-// export const getStaticPaths = async () => {
-//   const results = await axios.get('http://localhost:3000/api/crew');
-//   const paths = results.data.map((result) => ({
-//     params: { crew: result.name },
-//   }));
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
-
+import fsPromises from 'fs/promises';
+import path from 'path';
 export const getStaticProps = async () => {
-  const results = await axios(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/crew`
-  );
+  const filePath = path.join(process.cwd(), 'data.json');
+  const jsonData = await fsPromises.readFile(filePath);
+  const objectData = JSON.parse(jsonData);
   return {
-    props: { crew: results.data || null },
+    props: { crew: objectData.crew },
   };
 };

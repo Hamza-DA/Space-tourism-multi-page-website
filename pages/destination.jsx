@@ -31,6 +31,7 @@ const Destination = ({ destination }) => {
           world experience!'
         />
       </Head>
+      {console.log(destination)}
       <div className=' bg-cover bg-destination-mobile md:bg-destination-tablet lg:bg-destination-desktop bg-no-repeat relative min-h-screen'>
         <main className='2xl:container 2xl:mx-auto pb-24 pt-24 md:pt-28 px-9 lg:pb-0 lg:px-32'>
           <h6 className='uppercase text-center subheading-2 text-[20px] lg:text-[28px]  mb-8 text-white md:text-left'>
@@ -128,14 +129,13 @@ const Destination = ({ destination }) => {
 };
 
 export default Destination;
-
+import fsPromises from 'fs/promises';
+import path from 'path';
 export const getStaticProps = async () => {
-  const res = await axios(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/destination`
-  );
+  const filePath = path.join(process.cwd(), 'data.json');
+  const jsonData = await fsPromises.readFile(filePath);
+  const objectData = JSON.parse(jsonData);
   return {
-    props: {
-      destination: res.data || null,
-    },
+    props: { destination: objectData.destination },
   };
 };
