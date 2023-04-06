@@ -1,26 +1,45 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components{
+  body{
+    @apply bg-dark-blue text-white h-screen;
   }
-  body {
-    color: white;
-    background: black;
+  #__next{
+    @apply h-full;
+  }
+  .heading-1{
+    @apply font-display-1 text-[150px];
+  }
+  .heading-2{
+    @apply font-display-1 text-[100px];
+  }
+  .heading-3{
+    @apply font-display-1 text-[56px];
+  }
+  .heading-4{
+    @apply font-display-1 text-[32px];
+  }
+  .heading-5{
+    @apply font-display-1 tracking-[4.75px] text-[28px];
+  }
+  .heading-5{
+    @apply font-display-1 tracking-[4.75px] text-[28px];
+  }
+  .subheading-1{
+    @apply font-display-1 text-[28px];
+  }
+  .subheading-2{
+    @apply font-display-2 tracking-[2.35px] text-sm;
+  }
+  .nav-text{
+    @apply font-display-2 tracking-[2.7px] text-base;
+  }
+  .body-text{
+    @apply font-body;
+  }
+  .splide__pagination__page{
+    @apply bg-red-500 !important;
   }
 }
